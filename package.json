@@ -9,5 +9,9 @@
   },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "npmConfig": {
+    "registry": "http://registry.npmjs.org/",
+    "strict-ssl": false
   }
 }
