@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Weather Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f0f0f0;
+    }
+
+    .weather-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .refresh-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="weather-card">
+    <h1>Weather Dashboard</h1>
+    <p>Temperature: <span id="temperature">--</span>°C</p>
+    <p>Condition: <span id="condition">--</span></p>
+    <button class="refresh-button" onclick="getWeather()">Refresh</button>
+  </div>
+  <script>
+    function getWeather() {
+      fetch('/api/weather')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('temperature').textContent = data.temperature;
+          document.getElementById('condition').textContent = data.condition;
+        });
+    }
+    getWeather();
+  </script>
+</body>
+
+</html>
